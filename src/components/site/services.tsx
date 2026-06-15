@@ -1,4 +1,5 @@
 import { Compass, LineChart, Rocket, Users } from "lucide-react";
+import { Reveal } from "./reveal";
 
 const SERVICES = [
   {
@@ -31,7 +32,7 @@ export function Services() {
   return (
     <section id="services" className="bg-background py-20 lg:py-28">
       <div className="container-page">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-accent">
             Nos expertises
           </p>
@@ -43,24 +44,23 @@ export function Services() {
             opérationnelle pour transformer vos ambitions stratégiques en résultats
             concrets.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((service) => (
-            <div
-              key={service.title}
-              className="group rounded-xl border border-border bg-surface p-6 transition-all hover:-translate-y-1 hover:border-accent/40 hover:shadow-lg"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
-                <service.icon className="h-6 w-6" />
+          {SERVICES.map((service, i) => (
+            <Reveal key={service.title} delay={i * 0.07}>
+              <div className="group h-full rounded-xl border border-border bg-surface p-6 transition-all hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-xl hover:shadow-black/5">
+                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-primary-foreground transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  <service.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-5 font-heading text-lg font-semibold text-primary">
+                  {service.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="mt-5 font-heading text-lg font-semibold text-primary">
-                {service.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {service.description}
-              </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

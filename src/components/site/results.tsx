@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "lucide-react";
 import { Reveal } from "./reveal";
 
 const RESULTS = [
@@ -9,14 +10,14 @@ const RESULTS = [
     tag: "Stratégie",
   },
   {
-    metric: "-18%",
+    metric: "−18%",
     title: "de coûts opérationnels",
     description:
       "Refonte des processus de production et de la chaîne logistique d'un groupe de santé en 9 mois.",
     tag: "Performance",
   },
   {
-    metric: "x2,4",
+    metric: "×2,4",
     title: "de valorisation",
     description:
       "Préparation à la cession et structuration de la gouvernance pour une scale-up technologique.",
@@ -26,33 +27,36 @@ const RESULTS = [
 
 export function Results() {
   return (
-    <section id="resultats" className="bg-background py-20 lg:py-28">
+    <section id="resultats" className="bg-background py-24 lg:py-32">
       <div className="container-page">
-        <Reveal className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-            Résultats clients
+        <Reveal className="flex flex-col items-start gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div>
+            <div className="section-label">Résultats clients</div>
+            <h2 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-primary lg:text-5xl">
+              Des impacts concrets,<br />mesurés sur le terrain.
+            </h2>
+          </div>
+          <p className="max-w-sm text-base leading-relaxed text-muted-foreground lg:text-right">
+            Chaque mission se conclut par des livrables chiffrés,
+            vérifiables et actionnables par vos équipes.
           </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            Des impacts concrets, mesurés sur le terrain
-          </h2>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        {/* Big result cards */}
+        <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-3">
           {RESULTS.map((result, i) => (
             <Reveal key={result.title} delay={i * 0.08}>
-              <div className="group relative overflow-hidden rounded-xl border border-border bg-surface p-8 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-black/5">
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute right-0 top-0 h-24 w-24 opacity-0 transition-opacity group-hover:opacity-100"
-                  style={{
-                    background: "radial-gradient(circle at top right, rgba(202,138,4,0.12), transparent 70%)",
-                  }}
-                />
-                <span className="inline-block rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 text-xs font-semibold text-accent">
-                  {result.tag}
-                </span>
-                <p className="mt-4 font-heading text-5xl font-bold text-primary">{result.metric}</p>
-                <h3 className="mt-2 font-heading text-lg font-semibold text-primary">
+              <div className="group relative flex h-full flex-col bg-surface p-8 transition-colors hover:bg-primary/[0.03]">
+                <div className="flex items-start justify-between">
+                  <span className="inline-block rounded-full border border-accent/25 bg-accent/8 px-3 py-0.5 text-xs font-bold tracking-wide text-accent">
+                    {result.tag}
+                  </span>
+                  <ArrowUpRight className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
+                </div>
+                <p className="mt-6 font-heading text-6xl font-bold tracking-tight text-primary lg:text-7xl">
+                  {result.metric}
+                </p>
+                <h3 className="mt-3 font-heading text-lg font-semibold text-primary">
                   {result.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">

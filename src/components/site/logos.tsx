@@ -11,17 +11,17 @@ const CLIENTS = [
 
 export function Logos() {
   return (
-    <section className="border-b border-border bg-surface py-10">
+    <section className="bg-surface py-12">
       <div className="container-page">
         <Reveal>
-          <p className="text-center text-xs font-semibold uppercase tracking-widest text-muted-foreground">
-            La confiance de dirigeants exigeants
+          <p className="text-center text-[0.68rem] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            Ils nous font confiance
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mx-auto mt-8 grid max-w-4xl grid-cols-3 gap-px overflow-hidden rounded-xl border border-border bg-border lg:grid-cols-6">
             {CLIENTS.map((client) => (
               <div
                 key={client}
-                className="flex items-center justify-center rounded-md border border-border bg-background px-4 py-3 text-center text-sm font-semibold text-muted-foreground transition-colors hover:border-accent/30 hover:text-primary"
+                className="flex items-center justify-center bg-surface px-4 py-5 text-center text-xs font-bold tracking-wide text-muted-foreground transition-colors hover:bg-muted/40 hover:text-primary"
               >
                 {client}
               </div>

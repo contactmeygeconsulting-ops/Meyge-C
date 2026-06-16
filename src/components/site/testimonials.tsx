@@ -1,4 +1,3 @@
-import { Star } from "lucide-react";
 import { Reveal } from "./reveal";
 
 const TESTIMONIALS = [
@@ -6,61 +5,73 @@ const TESTIMONIALS = [
     quote:
       "Une équipe rigoureuse, à l'écoute et résolument orientée résultats. Le plan d'action livré était immédiatement actionnable par nos équipes.",
     name: "Sophie Lambert",
-    role: "Directrice Générale, Norvest Group",
+    role: "Directrice Générale",
+    company: "Norvest Group",
     initials: "SL",
   },
   {
     quote:
       "Meyge Consulting nous a aidés à clarifier nos priorités et à structurer notre gouvernance avant une levée de fonds majeure. Un partenaire de confiance.",
     name: "Thomas Reynaud",
-    role: "CEO, Lumea Capital",
+    role: "CEO",
+    company: "Lumea Capital",
     initials: "TR",
   },
   {
     quote:
       "Un véritable partenaire stratégique. Leur méthodologie a permis d'aligner le comité de direction autour d'objectifs communs et mesurables.",
     name: "Hélène Dujardin",
-    role: "Présidente, Caprion Santé",
+    role: "Présidente",
+    company: "Caprion Santé",
     initials: "HD",
   },
 ];
 
 export function Testimonials() {
   return (
-    <section id="temoignages" className="bg-primary/5 py-20 lg:py-28">
-      <div className="container-page">
-        <Reveal className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-accent">
-            Témoignages
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-primary sm:text-4xl">
-            Ce que nos clients disent de nous
+    <section id="temoignages" className="bg-primary py-24 text-primary-foreground lg:py-32">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-0 right-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+          backgroundSize: "56px 56px",
+          height: "100%",
+          position: "absolute",
+        }}
+      />
+      <div className="container-page relative">
+        <Reveal>
+          <div className="section-label">Témoignages</div>
+          <h2 className="mt-5 text-4xl font-bold leading-tight tracking-tight lg:text-5xl">
+            Ce que nos clients<br />disent de nous.
           </h2>
         </Reveal>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          {TESTIMONIALS.map((testimonial, i) => (
-            <Reveal key={testimonial.name} delay={i * 0.08}>
-              <figure className="flex h-full flex-col justify-between rounded-xl border border-border bg-surface p-8 shadow-sm">
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          {TESTIMONIALS.map((t, i) => (
+            <Reveal key={t.name} delay={i * 0.09}>
+              <figure className="flex h-full flex-col justify-between rounded-2xl border border-white/8 bg-white/5 p-8 backdrop-blur-sm">
+                {/* Large quote mark */}
                 <div>
-                  <div className="flex gap-1 text-accent">
-                    {Array.from({ length: 5 }).map((_, j) => (
-                      <Star key={j} className="h-4 w-4 fill-accent" />
-                    ))}
-                  </div>
-                  <blockquote className="mt-4 text-sm leading-relaxed text-secondary">
-                    &ldquo;{testimonial.quote}&rdquo;
+                  <span className="font-heading text-5xl font-bold leading-none text-accent/40">
+                    &ldquo;
+                  </span>
+                  <blockquote className="-mt-2 text-base leading-relaxed text-slate-300">
+                    {t.quote}
                   </blockquote>
                 </div>
-                <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-                  <span className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                    {testimonial.initials}
-                  </span>
+
+                <figcaption className="mt-8 flex items-center gap-4 border-t border-white/8 pt-6">
+                  <div className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-accent-foreground">
+                    {t.initials}
+                  </div>
                   <div>
-                    <p className="font-heading text-sm font-semibold text-primary">
-                      {testimonial.name}
+                    <p className="font-heading font-bold text-white">{t.name}</p>
+                    <p className="text-xs text-slate-400">
+                      {t.role} · {t.company}
                     </p>
-                    <p className="text-xs text-muted-foreground">{testimonial.role}</p>
                   </div>
                 </figcaption>
               </figure>
